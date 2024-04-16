@@ -1,0 +1,164 @@
+.Homepage {
+    min-height: 100vh;
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: space-evenly;
+    align-items: center;
+    overflow-x: hidden;
+    flex-wrap: wrap;
+
+}
+
+/* media query --- if screen is wider than 1350 then flex direction normal */
+
+.Homepage-Wallpaper{ 
+position: fixed;
+min-height: 100vh;
+filter: brightness(0.6);
+filter: blur(5px);
+
+z-index: -1;
+}
+
+/* GAME TITLE */
+
+.Homepage-Gametitle {
+    /* outline: 3px dashed pink; */
+    /* dimentions */
+    min-height: 30vh;
+
+    /* display */
+    display: flex;
+    align-items: center;
+    /* style */
+    font-size: 5rem;
+    font-family:Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    color: rgb(221, 66, 250)
+}
+
+/* CENTER  */
+
+.Homepage-Controlls {
+    /* outline: 3px dashed blue; */
+    /* dimentions */
+    min-height: 30vh;
+    /* display */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 15px;
+    padding: 20px;;
+}
+
+.Homepage-Controlls-island {
+    height: 60px;
+    width: 350px;
+    background-color: black;
+    border-radius: 50px;
+
+    /* display */
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.Homepage-Character-Bubble {
+    width: 45px;
+    height: 45px;
+    border: 2px solid rgb(221, 66, 250);
+    border-radius: 25px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+.Homepage-Character-Bubble:hover {
+    overflow: visible;
+}
+.Homepage-Character-Bubble img{ 
+    transition: 300ms;
+    width: 60px;
+    z-index: 0;
+}
+.Homepage-Character-Bubble img:hover{ 
+    transition: 300ms;
+    width: 100px;
+    z-index: 1;
+}
+
+.Hompage-Controlls-BTN-Container {
+    /* outline: 1px solid green; */
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.Hompage-Controlls-BTN-Container button {
+    background-color: black;
+    min-width: 60px;
+    border: 2px solid rgb(221, 66, 250);
+    border-radius: 25px;
+    color: white;
+    padding: 10px;
+}
+
+.Hompage-Controlls-BTN-Container button:hover {
+    background-color: black;
+    min-width: 60px;
+    border: 2px solid white;
+    border-radius: 25px;
+    color: rgb(221, 66, 250);
+    padding: 10px;
+}
+
+/* LEADERBOARD TABLE */
+
+
+.Homepage-Leaderboard {
+    background-color: rgba(0, 0, 0, 0.50);
+    border-radius: 25px;
+    /* dimentions */
+    width: 90%;
+    max-width: 460px;
+    max-height: 90vh;
+    padding: 10px;
+
+}
+
+.Homepage-Leaderboard table{ 
+    /* outline: 1px solid blue; */
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+
+}
+.Homepage-Leaderboard caption{ 
+    /* outline: 1px solid white; */
+    color: rgb(221, 66, 250);
+    font-size: 1.5rem;
+    
+}
+.Homepage-Leaderboard thead{ 
+    /* outline: 1px solid red; */
+    
+}
+.Homepage-Leaderboard tr{ 
+    /* outline: 1px solid yellow; */
+    height: 50px;
+    color: white;
+    
+}
+.Homepage-Leaderboard th{ 
+    /* outline: 1px solid green; */
+    width: 50%;
+    color: rgb(221, 66, 250);
+    font-size: 1.2rem;
+    padding: 10px;;
+    
+}
+.Homepage-Leaderboard tbody{ 
+    /* outline: 1px solid blue; */
+    
+}
