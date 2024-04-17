@@ -4,23 +4,35 @@ import './Homepage.css'
 // React 
 import { useState } from 'react';
 // RRD 
-
+// Components
+import { Howtoplay } from '../Components/Howtoplay';
 // COMPONENT 
 export const Homepage = () => {
 
     // STATES 
     const [howToPlayIsOpen, SetHowToPlayIsOpen] = useState(false);
+    const [blur, setBlur] = useState('0px')
+
+    // Button handlers 
+    const HowtoplayBTN = () => {
+        setBlur('10px')
+        SetHowToPlayIsOpen(true)
+    }
     return (
         <div className="Homepage">
+
+            {howToPlayIsOpen && <Howtoplay SetHowToPlayIsOpen={SetHowToPlayIsOpen} setBlur={setBlur} />}
+
             <img className='Homepage-Wallpaper' src='/Wallpaper.jpg'></img>
 
             {/* Game title */}
-            <div className='Homepage-Gametitle'>
-                Toon Finder
+            <div className='Homepage-Gametitle' style={{ filter: `blur(${blur})` }}>
+                <img className='Gametitle-Logo' src='/Picture 1.png' alt='Logo'></img>
             </div>
 
+
             {/* Center */}
-            <div className='Homepage-Controlls'>
+            <div className='Homepage-Controlls' style={{ filter: `blur(${blur})` }}>
                 <div className='Homepage-Controlls-island'>
                     <div className='Homepage-Character-Bubble'>
                         <img src='/PngItem_26692.png' alt='Tom'></img>
@@ -35,17 +47,17 @@ export const Homepage = () => {
                         <img src='/Roger-American-Dad-PNG-Photos.png' alt='Roger'></img>
                     </div>
                     <div className='Homepage-Character-Bubble'>
-                        <img src='' alt=''></img>
+                        <img src='/pngwing.com-3.png' alt=''></img>
                     </div>
                 </div>
                 <span className='Hompage-Controlls-BTN-Container'>
-                    <button>How to play</button>
+                    <button onClick={HowtoplayBTN}>How to play</button>
                     <button>Play</button>
                 </span>
             </div>
 
             {/* Leaderboard */}
-            <div className='Homepage-Leaderboard'>
+            <div className='Homepage-Leaderboard' style={{ filter: `blur(${blur})` }}>
                 <table>
                     <caption>Leaderboard</caption>
                     <thead>
@@ -78,7 +90,6 @@ export const Homepage = () => {
                     </tbody>
                 </table>
             </div>
-
         </div>
     )
 }

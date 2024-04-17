@@ -6,19 +6,23 @@
     align-items: center;
     overflow-x: hidden;
     flex-wrap: wrap;
-
 }
 
-/* media query --- if screen is wider than 1350 then flex direction normal */
-
-.Homepage-Wallpaper{ 
-position: fixed;
-min-height: 100vh;
-filter: brightness(0.6);
-filter: blur(5px);
-
-z-index: -1;
+@media screen and (max-width: 1350px) {
+    .Homepage {
+        flex-direction: column;
+    }
 }
+
+.Homepage-Wallpaper {
+    position: fixed;
+    min-height: 100vh;
+    filter: brightness(0.6);
+    filter: blur(5px);
+
+    z-index: -1;
+}
+
 
 /* GAME TITLE */
 
@@ -26,15 +30,26 @@ z-index: -1;
     /* outline: 3px dashed pink; */
     /* dimentions */
     min-height: 30vh;
+    max-width: 90%;
+    max-height: 100%;
 
     /* display */
     display: flex;
+    justify-content: center;
     align-items: center;
+    text-align: center;
     /* style */
     font-size: 5rem;
-    font-family:Arial, Helvetica, sans-serif;
+    font-family: 'Arial Black', sans-serif;
     font-weight: bold;
+    -webkit-text-stroke: 2px white; /* For Safari */
+    text-stroke: 2px white; /* For Firefox */
     color: rgb(221, 66, 250)
+}
+
+.Gametitle-Logo{ 
+    width: 400px;
+    max-width: 100%
 }
 
 /* CENTER  */
@@ -48,7 +63,8 @@ z-index: -1;
     flex-direction: column;
     justify-content: center;
     gap: 15px;
-    padding: 20px;;
+    padding: 20px;
+    ;
 }
 
 .Homepage-Controlls-island {
@@ -61,6 +77,9 @@ z-index: -1;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+
+    /* style */
+    box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.7);
 }
 
 .Homepage-Character-Bubble {
@@ -74,15 +93,18 @@ z-index: -1;
     align-items: center;
     overflow: hidden;
 }
+
 .Homepage-Character-Bubble:hover {
     overflow: visible;
 }
-.Homepage-Character-Bubble img{ 
+
+.Homepage-Character-Bubble img {
     transition: 300ms;
     width: 60px;
     z-index: 0;
 }
-.Homepage-Character-Bubble img:hover{ 
+
+.Homepage-Character-Bubble img:hover {
     transition: 300ms;
     width: 100px;
     z-index: 1;
@@ -99,6 +121,7 @@ z-index: -1;
     background-color: black;
     min-width: 60px;
     border: 2px solid rgb(221, 66, 250);
+    box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.7);
     border-radius: 25px;
     color: white;
     padding: 10px;
@@ -117,6 +140,8 @@ z-index: -1;
 
 
 .Homepage-Leaderboard {
+    /* style */
+    box-shadow: 0 0 5px 1px rgb(221, 66, 250);
     background-color: rgba(0, 0, 0, 0.50);
     border-radius: 25px;
     /* dimentions */
@@ -127,38 +152,44 @@ z-index: -1;
 
 }
 
-.Homepage-Leaderboard table{ 
+.Homepage-Leaderboard table {
     /* outline: 1px solid blue; */
     width: 100%;
     padding: 10px;
     text-align: center;
 
 }
-.Homepage-Leaderboard caption{ 
+
+.Homepage-Leaderboard caption {
     /* outline: 1px solid white; */
     color: rgb(221, 66, 250);
     font-size: 1.5rem;
-    
+
 }
-.Homepage-Leaderboard thead{ 
+
+.Homepage-Leaderboard thead {
     /* outline: 1px solid red; */
-    
+
 }
-.Homepage-Leaderboard tr{ 
+
+.Homepage-Leaderboard tr {
     /* outline: 1px solid yellow; */
     height: 50px;
     color: white;
-    
+
 }
-.Homepage-Leaderboard th{ 
+
+.Homepage-Leaderboard th {
     /* outline: 1px solid green; */
     width: 50%;
     color: rgb(221, 66, 250);
     font-size: 1.2rem;
-    padding: 10px;;
-    
+    padding: 10px;
+    ;
+
 }
-.Homepage-Leaderboard tbody{ 
+
+.Homepage-Leaderboard tbody {
     /* outline: 1px solid blue; */
-    
+
 }
