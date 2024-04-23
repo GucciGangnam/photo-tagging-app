@@ -7,7 +7,7 @@ import { useState } from 'react';
 // Components
 import { Howtoplay } from '../Components/Howtoplay';
 // COMPONENT 
-export const Homepage = () => {
+export const Homepage = ({setGameState}) => {
 
     // STATES 
     const [howToPlayIsOpen, SetHowToPlayIsOpen] = useState(false);
@@ -17,6 +17,10 @@ export const Homepage = () => {
     const HowtoplayBTN = () => {
         setBlur('10px')
         SetHowToPlayIsOpen(true)
+    }
+    // Start Game 
+    const StartGame = () => { 
+        setGameState('Gamepage')
     }
     return (
         <div className="Homepage">
@@ -52,7 +56,7 @@ export const Homepage = () => {
                 </div>
                 <span className='Hompage-Controlls-BTN-Container'>
                     <button onClick={HowtoplayBTN}>How to play</button>
-                    <button>Play</button>
+                    <button onClick={StartGame}>Play</button>
                 </span>
             </div>
 

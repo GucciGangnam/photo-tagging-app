@@ -1,0 +1,100 @@
+/* test div  */
+
+.Test {
+    color: red;
+    position: absolute;
+    top: 145px;
+}
+
+
+.Gamepage {
+    width: 100vw;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.GameIMG {
+    width: 100vw;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: -1;
+}
+
+.GameIMG:hover {
+    cursor: crosshair;
+}
+.Coordinates {
+    display: grid;
+    grid-template-columns: repeat(53, 1fr);
+    grid-template-rows: repeat(100, 1fr);
+    width: 100vw;
+    aspect-ratio: 0.53;
+    z-index: 1;
+}
+
+
+
+
+.grid-item {
+    border: 1px solid black;
+    /* Optional: Border for visualization */
+    z-index: 0;
+}
+
+
+.Gamepage-Controlls-island {
+    position: fixed;
+    top: 20px;
+
+    height: 60px;
+    width: 350px;
+    background-color: black;
+    border-radius: 50px;
+
+    /* display */
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+    /* style */
+    box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.7);
+    z-index: 2;
+    opacity: 0.3;
+    transition: 300ms;
+}
+.Gamepage-Controlls-island:hover {
+    opacity: 1;
+    transition: 300ms;
+}
+
+.Gamepage-Character-Bubble {
+    width: 45px;
+    height: 45px;
+    border: 2px solid rgb(221, 66, 250);
+    border-radius: 25px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.Gamepage-Character-Bubble:hover {
+    overflow: visible;
+
+}
+
+.Gamepage-Character-Bubble img {
+    transition: 300ms;
+    width: 60px;
+    z-index: 0;
+}
+
+.Gamepage-Character-Bubble img:hover {
+    transition: 300ms;
+    width: 100px;
+    z-index: 0;
+}

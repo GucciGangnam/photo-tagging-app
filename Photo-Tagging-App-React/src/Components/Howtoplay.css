@@ -34,6 +34,11 @@
 
 .Rule-Icon{
     width: 100px;
+    padding: 20px;
+}
+
+.Rule-Icon img{
+    max-width: 100%;
 }
 
 .Howtoplay button { 
