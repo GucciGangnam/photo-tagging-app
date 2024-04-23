@@ -8,6 +8,7 @@ import './Gamepage.css'
 
 // Components
 import { Selecter } from '../Components/Selecter'
+import { Circle } from '../Components/Circle';
 
 
 
@@ -16,34 +17,16 @@ import { Selecter } from '../Components/Selecter'
 export const Gamepage = ({ setGameState }) => {
 
     // STATES
-    // const [popupDisplay, setPopupDisplay] = useState("none")
-    // const [popupPosition, setPopupPosition] = useState({ x: 0, y: 0 });
+    const [circlePageX, setCirclePageX] = useState("")
+    const [circlePageY, setCirclePageY] = useState("")
+    const [circleShowing, setCircleShowing] = useState('none')
 
     const handleGridClick = (e) => {
-        // Color the cell red
-        e.target.style.backgroundColor = 'red';
-    
-        // Set cell overflow property to visible
-        e.target.style.overflow = 'visible';
-    
-        // Show popup display 
-        // setPopupDisplay('block');
-    
-        // Add contents into the cell
-        const selecterDiv = document.createElement('div');
-        selecterDiv.className = 'SelecterDiv';
-        selecterDiv.style.display = 'block'; // Apply popup display style
-        selecterDiv.style.position = 'absolute'; // Apply position style
-        selecterDiv.style.bottom = '0px'; // Apply position style
-        selecterDiv.style.position = 'absolute'; // Apply position style
-    
-        // Render Selecter component inside selecterDiv using createRoot
-        const root = createRoot(selecterDiv);
-        root.render(<Selecter />);
-    
-        // Append the SelecterDiv to the clicked cell
-        e.target.appendChild(selecterDiv);
+        setCirclePageX(e.pageX - 25)
+        setCirclePageY(e.pageY - 25)
+        setCircleShowing('block')
     };
+
 
 
 
@@ -57,7 +40,7 @@ export const Gamepage = ({ setGameState }) => {
     return (
         <div className='Gamepage'>
 
-
+            <Circle circlePageX={circlePageX} circlePageY={circlePageY} circleShowing={circleShowing} />
             <img className='GameIMG' src='/Game image.jpg' alt='Game image'></img>
             <div className='Coordinates'>
                 {cells}
