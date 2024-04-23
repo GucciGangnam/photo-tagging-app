@@ -2,7 +2,7 @@
 // Styles
 import './App.css'
 // React 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 // RRD 
 

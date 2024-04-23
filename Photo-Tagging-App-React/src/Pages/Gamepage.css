@@ -1,10 +1,4 @@
-/* test div  */
 
-.Test {
-    color: red;
-    position: absolute;
-    top: 145px;
-}
 
 
 .Gamepage {
@@ -12,6 +6,8 @@
     position: relative;
     display: flex;
     justify-content: center;
+    max-height: 3708px;
+    overflow: hidden;
 }
 
 .GameIMG {
