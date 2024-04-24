@@ -1,0 +1,60 @@
+.LoadingComp{
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: rgb(225, 225, 225);
+
+}
+.Loadingcomp-Island{
+    height: 60px;
+    width: 100%;
+    background-color: black;
+    border-radius: 50px;
+    /* display */
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    /* style */
+    box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.7);
+}
+.Loadingcomp-Bubble1, 
+.Loadingcomp-Bubble2, 
+.Loadingcomp-Bubble3, 
+.Loadingcomp-Bubble4, 
+.Loadingcomp-Bubble5 {
+    background-color: gray;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    animation: bubbleAnimation 2s infinite;
+}
+
+@keyframes bubbleAnimation {
+    0%, 100% {
+        transform: scale(1);
+        background-color: rgb(221, 66, 250);
+    }
+    50% {
+        transform: scale(0.5);
+        background-color: grey;
+    }
+}
+
+.Loadingcomp-Bubble2 {
+    animation-delay: 0.2s;
+}
+
+.Loadingcomp-Bubble3 {
+    animation-delay: 0.4s;
+}
+
+.Loadingcomp-Bubble4 {
+    animation-delay: 0.6s;
+}
+
+.Loadingcomp-Bubble5 {
+    animation-delay: 0.8s;
+}

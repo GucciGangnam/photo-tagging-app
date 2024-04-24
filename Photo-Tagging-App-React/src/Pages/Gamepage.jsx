@@ -100,29 +100,6 @@ export const Gamepage = ({ setGameState }) => {
             <div className='Coordinates'>
                 {cells}
             </div>
-
-
-
-
-
-            {/* <div className='Gamepage-Controlls-island'>
-                <div className='Gamepage-Character-Bubble'>
-                    <img src='/PngItem_26692.png' alt='Tom'></img>
-                </div>
-                <div className='Gamepage-Character-Bubble'>
-                    <img src='/pngwing.com-2.png' alt='Spiderman'></img>
-                </div>
-                <div className='Gamepage-Character-Bubble'>
-                    <img src='/pngwing.com.png' alt='Kenny'></img>
-                </div>
-                <div className='Gamepage-Character-Bubble'>
-                    <img src='/Roger-American-Dad-PNG-Photos.png' alt='Roger'></img>
-                </div>
-                <div className='Gamepage-Character-Bubble'>
-                    <img src='/pngwing.com-3.png' alt=''></img>
-                </div>
-            </div> */}
-
         </div>
     )
 }

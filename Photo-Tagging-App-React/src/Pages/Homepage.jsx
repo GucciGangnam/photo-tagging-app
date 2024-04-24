@@ -18,9 +18,18 @@ export const Homepage = ({setGameState}) => {
         setBlur('10px')
         SetHowToPlayIsOpen(true)
     }
-    // Start Game 
+    // Start Game
+    // NOTE - This shoudl be an anyc fetch function, 
+    // when the response is OK (user created and accessToken granted),
+    // the gameState should change to GAMEPAGE,
+    // in the meantime, set it to loading
     const StartGame = () => { 
-        setGameState('Gamepage')
+
+        setGameState('Loading')
+        setTimeout(() => { 
+            setGameState('Gamepage')
+        }, 2000)
+
     }
     return (
         <div className="Homepage">
