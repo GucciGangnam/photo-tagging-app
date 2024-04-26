@@ -34,7 +34,7 @@ export const Selecter = ({ selectedCell,
 
     // Button handlers 
     // Handle Character select
-
+    // NOTE - EACH ONE OF THESE SHOUDL MAKE A FETCH REQUEST WITH TEH ACCESS TOEKN TO TEH BACKEND 
 
     const handleSelectTom = (e) => { 
         setSelectedCharacter(e.target.alt)

@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const cors = require('cors');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -12,8 +13,16 @@ const { v4: uuidv4 } = require('uuid');
 // Configure .env
 require('dotenv').config();
 
-
 var app = express();
+
+// CORS configuration //
+const corsOptions = {
+  origin: '*', // Allow only requests from this origin
+  methods: 'GET,POST', // Allow only specified HTTP methods
+  allowedHeaders: 'Authorization,Content-Type', // Allow only specified headers
+};
+app.use(cors(corsOptions));
+// // // // // // // // 
 
 
 //////// THIS CODE WAS PROVIDED BY MONGOD ATLAS  --- IT ALLOWED ME TO CONNECT BUT NOT TO CREATE COLLECTION USING THE MATHODS IM USING HERE AND HAVE ALWAYS USED ////////////

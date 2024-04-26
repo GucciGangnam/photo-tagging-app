@@ -23,12 +23,28 @@ export const Homepage = ({setGameState}) => {
     // when the response is OK (user created and accessToken granted),
     // the gameState should change to GAMEPAGE,
     // in the meantime, set it to loading
-    const StartGame = () => { 
-
-        setGameState('Loading')
-        setTimeout(() => { 
-            setGameState('Gamepage')
-        }, 2000)
+    const StartGame = async() => { 
+        
+        try {
+            const requestOptions = {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            };
+            setGameState('Loading')
+            const response = await fetch('http://localhost:3000/users/create', requestOptions);
+            if (!response.ok) {
+                throw new Error('Failed to fetch data');
+            }
+            const jsonData = await response.json();
+            localStorage.setItem('JWT', jsonData.jwt);
+            setTimeout(() => {
+                setGameState('Gamepage')
+            }, 2000);
+        } catch (error) {
+            console.error('Error fetching data:', error.message);
+        }
 
     }
     return (

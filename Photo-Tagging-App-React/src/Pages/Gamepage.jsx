@@ -35,6 +35,7 @@ export const Gamepage = ({ setGameState }) => {
         console.log("UE char " + selectedCharacter)
         console.log("UE cell " + selectedCell)
     }, [selectedCharacter, selectedCell])
+    
     // Selecter States
     const [selecterVisible, setSelecterVisible] = useState(false);
 
