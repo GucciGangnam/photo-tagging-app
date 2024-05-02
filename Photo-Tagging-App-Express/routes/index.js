@@ -28,4 +28,7 @@ router.post('/selectroger', authenticater_Controller.validateAccessToken, game_c
 // Select BRIAN
 router.post('/selectbrian', authenticater_Controller.validateAccessToken, game_controller.select_brian )
 
+// Check game over 
+router.post('/checkgameover', authenticater_Controller.validateAccessToken, game_controller.check_game_over)
+
 module.exports = router;

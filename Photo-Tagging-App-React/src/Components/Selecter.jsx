@@ -29,7 +29,31 @@ export const Selecter = ({ getAccInfo,
 
     // Button handlers 
     // Handle Character select
-    // NOTE - EACH ONE OF THESE SHOUDL MAKE A FETCH REQUEST WITH TEH ACCESS TOEKN TO TEH BACKEND 
+    // NOTE - EACH ONE OF THESE SHOUDL MAKE A FETCH REQUEST WITH TEH ACCESS TOEKN TO TEH BACKEND
+
+    // Check game over function
+    const checkGameOver = async () => {
+        const JWT = localStorage.getItem('JWT')
+        try {
+            const requestOptions = {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': JWT,
+                },
+            };
+            const response = await fetch('http://localhost:3000/checkgameover', requestOptions);
+            console.log("game finish checking3")
+            console.log(response)
+            if (!response.ok) {
+                console.log('front end - NOT WON')
+                return;
+            }
+            console.log('front end - WON')
+        } catch (error) {
+            console.error('Error fetching data:', error.message);
+        }
+    }
 
     const handleSelectTom = async (e) => {
         setSelectedCharacter(e.target.alt)
@@ -49,11 +73,11 @@ export const Selecter = ({ getAccInfo,
             };
             const response = await fetch('http://localhost:3000/selecttom', requestOptions);
             if (!response.ok) {
-                setTimeout(() => { 
+                setTimeout(() => {
                     setLoading(false)
                     console.log("Incorrect")
                     // handle incorrect guess on front end 
-                },1000)
+                }, 1000)
                 return;
             }
             setTimeout(() => {
@@ -61,13 +85,13 @@ export const Selecter = ({ getAccInfo,
                 console.log("Correct")
                 // handle incorrect guess on front end 
             }, 1000)
+            checkGameOver();
             getAccInfo();
         } catch (error) {
             console.error('Error fetching data:', error.message);
         }
     }
-
-    const handleSelectSpiderman = async(e) => {
+    const handleSelectSpiderman = async (e) => {
         setSelectedCharacter(e.target.alt)
         setLoading(true)
         const JWT = localStorage.getItem('JWT')
@@ -85,11 +109,11 @@ export const Selecter = ({ getAccInfo,
             };
             const response = await fetch('http://localhost:3000/selectspiderman', requestOptions);
             if (!response.ok) {
-                setTimeout(() => { 
+                setTimeout(() => {
                     setLoading(false)
                     console.log("Incorrect")
                     // handle incorrect guess on front end 
-                },1000)
+                }, 1000)
                 return;
             }
             setTimeout(() => {
@@ -97,12 +121,13 @@ export const Selecter = ({ getAccInfo,
                 console.log("Correct")
                 // handle incorrect guess on front end 
             }, 1000)
+            checkGameOver();
             getAccInfo();
         } catch (error) {
             console.error('Error fetching data:', error.message);
         }
     }
-    const handleSelectKenny = async(e) => {
+    const handleSelectKenny = async (e) => {
         setSelectedCharacter(e.target.alt)
         setLoading(true)
         const JWT = localStorage.getItem('JWT')
@@ -120,11 +145,11 @@ export const Selecter = ({ getAccInfo,
             };
             const response = await fetch('http://localhost:3000/selectkenny', requestOptions);
             if (!response.ok) {
-                setTimeout(() => { 
+                setTimeout(() => {
                     setLoading(false)
                     console.log("Incorrect")
                     // handle incorrect guess on front end 
-                },1000)
+                }, 1000)
                 return;
             }
             setTimeout(() => {
@@ -132,12 +157,13 @@ export const Selecter = ({ getAccInfo,
                 console.log("Correct")
                 // handle incorrect guess on front end 
             }, 1000)
+            checkGameOver();
             getAccInfo();
         } catch (error) {
             console.error('Error fetching data:', error.message);
         }
     }
-    const handleSelectRoger = async(e) => {
+    const handleSelectRoger = async (e) => {
         setSelectedCharacter(e.target.alt)
         setLoading(true)
         const JWT = localStorage.getItem('JWT')
@@ -155,11 +181,11 @@ export const Selecter = ({ getAccInfo,
             };
             const response = await fetch('http://localhost:3000/selectroger', requestOptions);
             if (!response.ok) {
-                setTimeout(() => { 
+                setTimeout(() => {
                     setLoading(false)
                     console.log("Incorrect")
                     // handle incorrect guess on front end 
-                },1000)
+                }, 1000)
                 return;
             }
             setTimeout(() => {
@@ -167,12 +193,13 @@ export const Selecter = ({ getAccInfo,
                 console.log("Correct")
                 // handle incorrect guess on front end 
             }, 1000)
+            checkGameOver();
             getAccInfo();
         } catch (error) {
             console.error('Error fetching data:', error.message);
         }
     }
-    const handleSelectBrian = async(e) => {
+    const handleSelectBrian = async (e) => {
         setSelectedCharacter(e.target.alt)
         setLoading(true)
         const JWT = localStorage.getItem('JWT')
@@ -190,11 +217,11 @@ export const Selecter = ({ getAccInfo,
             };
             const response = await fetch('http://localhost:3000/selectbrian', requestOptions);
             if (!response.ok) {
-                setTimeout(() => { 
+                setTimeout(() => {
                     setLoading(false)
                     console.log("Incorrect")
                     // handle incorrect guess on front end 
-                },1000)
+                }, 1000)
                 return;
             }
             setTimeout(() => {
@@ -202,12 +229,12 @@ export const Selecter = ({ getAccInfo,
                 console.log("Correct")
                 // handle incorrect guess on front end 
             }, 1000)
+            checkGameOver();
             getAccInfo();
         } catch (error) {
             console.error('Error fetching data:', error.message);
         }
     }
-
     // Close selecter
     const handleCloseSeleter = () => {
         setSelecterVisible(false)
@@ -216,7 +243,6 @@ export const Selecter = ({ getAccInfo,
         setSelectedCell('')
         setSelectedCharacter('')
     }
-
     return (
         <div className={selecterVisible ? 'SelecterVisible' : 'Selecter'} >
             <div className='Selecter-Controlls-island'>

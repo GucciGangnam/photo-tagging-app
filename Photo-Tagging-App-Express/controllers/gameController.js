@@ -105,5 +105,14 @@ exports.select_brian = asyncHandler(async (req, res, next) => {
 
 
 // CHECK IF GAME IS OVER
-
+exports.check_game_over = asyncHandler(async(req, res, next) => { 
+    const userAccount = await Users.findOne({ID: req.userId});
+    if ((userAccount.FOUND_TOM) && (userAccount.FOUND_SPIDERMAN) && (userAccount.FOUND_KENNY) && (userAccount.FOUND_ROGER) && (userAccount.FOUND_BRIAN)){ 
+        console.log("you won!")
+        return res.status(200).end()
+    } else { 
+        console.log("you havent won yet!")
+        return res.status(401).end()
+    }
+})
 // // // // // // // // // 

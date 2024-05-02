@@ -18,17 +18,17 @@ export const Gamepage = ({ setGameState }) => {
 
     // Get user Accoutn info on mount
     useEffect(() => {
-        console.log("gamepage mounted")
+        // console.log("gamepage mounted")
         getAccInfo();
     }, [])
 
     // STATES
     const [userAccount, setUserAccount] = useState({})
-    const [elapsedTime, setElapsedTime] = useState(0);
+
 
     // UE to update front with back end saved data
     useEffect(() => {
-        console.log(userAccount)
+        // console.log(userAccount)
         if (userAccount.FOUND_BRIAN) {
             setBrianFound(true)
         }
@@ -44,8 +44,7 @@ export const Gamepage = ({ setGameState }) => {
         if (userAccount.FOUND_TOM) {
             setTomFound(true)
         }
-        // Calculate elapsed time
-        calculateElapsedTime();
+        setStartTime(new Date(userAccount.START_TIME))
     }, [userAccount])
 
     // Function to fetch acc info 
@@ -72,31 +71,27 @@ export const Gamepage = ({ setGameState }) => {
     }
 
     // TIMER //
-    // Calculate elapsed time
-    const calculateElapsedTime = () => {
-        if (userAccount.START_TIME) {
-            const startTime = new Date(userAccount.START_TIME);
-            const currentTime = new Date();
-            const difference = currentTime - startTime;
-            setElapsedTime(difference);
-        }
-    };
-
-    // Timer format function
-    const formatTime = (time) => {
-        const seconds = Math.floor(time / 1000);
-        const minutes = Math.floor(seconds / 60);
-        const hours = Math.floor(minutes / 60);
-        return `${hours}:${minutes % 60}:${seconds % 60}`;
-    };
+    const [startTime, setStartTime] = useState(new Date('2024-05-02T09:30:00.151+00:00'));
+    const [currentTime, setCurrentTime] = useState(new Date());
 
     useEffect(() => {
-        const timer = setInterval(() => {
-            calculateElapsedTime();
+        const intervalId = setInterval(() => {
+            setCurrentTime(new Date());
         }, 1000);
 
-        return () => clearInterval(timer);
+        return () => clearInterval(intervalId);
     }, []);
+
+    const elapsedTime = Math.floor((currentTime - startTime) / 1000); // in seconds
+
+    const formatTime = (timeInSeconds) => {
+        const hours = Math.floor(timeInSeconds / 3600);
+        const minutes = Math.floor((timeInSeconds % 3600) / 60);
+        const seconds = timeInSeconds % 60;
+
+        return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    };
+
 
 
     // Game function States 
@@ -146,7 +141,7 @@ export const Gamepage = ({ setGameState }) => {
         <div className='Gamepage'>
             {/* Timer */}
             <div className='Timer'>
-                <p>{formatTime(elapsedTime)}</p>
+                <p>Elapsed Time: {formatTime(elapsedTime)}</p>
             </div>
             {/* Hightlight circle */}
             <Circle circlePageX={circlePageX} circlePageY={circlePageY} circleShowing={circleShowing} />
