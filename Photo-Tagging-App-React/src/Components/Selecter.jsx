@@ -10,23 +10,18 @@ import './Selecter.css'
 
 
 
-export const Selecter = ({ selectedCell,
+export const Selecter = ({ getAccInfo,
+    selectedCell,
     setSelectedCell,
     selecterVisible,
     setSelecterVisible,
     setCircleShowing,
-    selectedCharacter,
     setSelectedCharacter,
     tomFound,
-    setTomFound,
     spidermanFound,
-    setSpidermanFound,
     kennyFound,
-    setKennyFound,
     rogerFound,
-    setRogerFound,
     brianFound,
-    setBrianFound
 }) => {
 
     // States 
@@ -36,45 +31,181 @@ export const Selecter = ({ selectedCell,
     // Handle Character select
     // NOTE - EACH ONE OF THESE SHOUDL MAKE A FETCH REQUEST WITH TEH ACCESS TOEKN TO TEH BACKEND 
 
-    const handleSelectTom = (e) => { 
+    const handleSelectTom = async (e) => {
         setSelectedCharacter(e.target.alt)
         setLoading(true)
-        setTimeout(() => {
-            setLoading(false);
-            setTomFound(true);
-        }, 2000)
+        const JWT = localStorage.getItem('JWT')
+        try {
+            console.log("tom fetch started")
+            const requestOptions = {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': JWT,
+                },
+                body: JSON.stringify({
+                    selectedCell: selectedCell,
+                })
+            };
+            const response = await fetch('http://localhost:3000/selecttom', requestOptions);
+            if (!response.ok) {
+                setTimeout(() => { 
+                    setLoading(false)
+                    console.log("Incorrect")
+                    // handle incorrect guess on front end 
+                },1000)
+                return;
+            }
+            setTimeout(() => {
+                setLoading(false)
+                console.log("Correct")
+                // handle incorrect guess on front end 
+            }, 1000)
+            getAccInfo();
+        } catch (error) {
+            console.error('Error fetching data:', error.message);
+        }
     }
-    const handleSelectSpiderman = (e) => { 
+
+    const handleSelectSpiderman = async(e) => {
         setSelectedCharacter(e.target.alt)
         setLoading(true)
-        setTimeout(() => {
-            setLoading(false);
-            setSpidermanFound(true);
-        }, 2000)
+        const JWT = localStorage.getItem('JWT')
+        try {
+            console.log("tom fetch started")
+            const requestOptions = {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': JWT,
+                },
+                body: JSON.stringify({
+                    selectedCell: selectedCell,
+                })
+            };
+            const response = await fetch('http://localhost:3000/selectspiderman', requestOptions);
+            if (!response.ok) {
+                setTimeout(() => { 
+                    setLoading(false)
+                    console.log("Incorrect")
+                    // handle incorrect guess on front end 
+                },1000)
+                return;
+            }
+            setTimeout(() => {
+                setLoading(false)
+                console.log("Correct")
+                // handle incorrect guess on front end 
+            }, 1000)
+            getAccInfo();
+        } catch (error) {
+            console.error('Error fetching data:', error.message);
+        }
     }
-    const handleSelectKenny = (e) => { 
+    const handleSelectKenny = async(e) => {
         setSelectedCharacter(e.target.alt)
         setLoading(true)
-        setTimeout(() => {
-            setLoading(false);
-            setKennyFound(true);
-        }, 2000)
+        const JWT = localStorage.getItem('JWT')
+        try {
+            console.log("tom fetch started")
+            const requestOptions = {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': JWT,
+                },
+                body: JSON.stringify({
+                    selectedCell: selectedCell,
+                })
+            };
+            const response = await fetch('http://localhost:3000/selectkenny', requestOptions);
+            if (!response.ok) {
+                setTimeout(() => { 
+                    setLoading(false)
+                    console.log("Incorrect")
+                    // handle incorrect guess on front end 
+                },1000)
+                return;
+            }
+            setTimeout(() => {
+                setLoading(false)
+                console.log("Correct")
+                // handle incorrect guess on front end 
+            }, 1000)
+            getAccInfo();
+        } catch (error) {
+            console.error('Error fetching data:', error.message);
+        }
     }
-    const handleSelectRoger = (e) => { 
+    const handleSelectRoger = async(e) => {
         setSelectedCharacter(e.target.alt)
         setLoading(true)
-        setTimeout(() => {
-            setLoading(false);
-            setRogerFound(true);
-        }, 2000)
+        const JWT = localStorage.getItem('JWT')
+        try {
+            console.log("tom fetch started")
+            const requestOptions = {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': JWT,
+                },
+                body: JSON.stringify({
+                    selectedCell: selectedCell,
+                })
+            };
+            const response = await fetch('http://localhost:3000/selectroger', requestOptions);
+            if (!response.ok) {
+                setTimeout(() => { 
+                    setLoading(false)
+                    console.log("Incorrect")
+                    // handle incorrect guess on front end 
+                },1000)
+                return;
+            }
+            setTimeout(() => {
+                setLoading(false)
+                console.log("Correct")
+                // handle incorrect guess on front end 
+            }, 1000)
+            getAccInfo();
+        } catch (error) {
+            console.error('Error fetching data:', error.message);
+        }
     }
-    const handleSelectBrian = (e) => { 
+    const handleSelectBrian = async(e) => {
         setSelectedCharacter(e.target.alt)
         setLoading(true)
-        setTimeout(() => {
-            setLoading(false);
-            setBrianFound(true);
-        }, 2000)
+        const JWT = localStorage.getItem('JWT')
+        try {
+            console.log("tom fetch started")
+            const requestOptions = {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': JWT,
+                },
+                body: JSON.stringify({
+                    selectedCell: selectedCell,
+                })
+            };
+            const response = await fetch('http://localhost:3000/selectbrian', requestOptions);
+            if (!response.ok) {
+                setTimeout(() => { 
+                    setLoading(false)
+                    console.log("Incorrect")
+                    // handle incorrect guess on front end 
+                },1000)
+                return;
+            }
+            setTimeout(() => {
+                setLoading(false)
+                console.log("Correct")
+                // handle incorrect guess on front end 
+            }, 1000)
+            getAccInfo();
+        } catch (error) {
+            console.error('Error fetching data:', error.message);
+        }
     }
 
     // Close selecter

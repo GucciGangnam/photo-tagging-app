@@ -10,22 +10,18 @@ const Users = require("../models/user")
 const { v4: uuidv4 } = require('uuid');
 // Import JWT
 const jwt = require("jsonwebtoken");
+// Controllers
+const game_controller = require('../controllers/gameController');
 
 // CONTROLLER //
 exports.create_user = asyncHandler(async (req, res, next) => {
-
-    // Check if userID exists 
-
-    // If YES - DONT CREATE NEW USER
-
-    // if NO - CFREATE NEW USER and pass access token to user browser
     try {
         // Set Current time 
         const startTime = new Date();
         // Made uuid USER_ID
         const userID = "UID" + uuidv4()
         // Get user IP Address
-        const ipAddress = req.socket.remoteAddress;
+        const ipAddress = 'req.socket.remoteAddress;'
         // Create new user
         const newUser = new Users({
             ID: userID,
@@ -38,24 +34,42 @@ exports.create_user = asyncHandler(async (req, res, next) => {
             IP_ADDRESSES: [ipAddress]
         });
         await newUser.save(); // Wait for the save operation to complete
-
         // CREATE JWT //
         const payload = {
             USER_ID: userID,
-            START_TIME: startTime,
         }
         const secretKey = process.env.API_SECURITY_KEY;
-        const accessToken = jwt.sign(payload, secretKey, { expiresIn: '60m' })
-        console.log(accessToken)
+        req.accessToken = jwt.sign(payload, secretKey, { expiresIn: '600m' })
         // // // // // //
 
-        console.log("User created successfully:", newUser);
-        return res.status(200).json({ jwt: accessToken });
+        
+        console.log("User created successfully:")
+        game_controller.start_game(req, res);
     } catch (error) {
         // If an error occurs during the save operation, log and return an error response
         console.error("Error creating user:", error);
         return res.status(500).json({ error: "Failed to create user" });
     }
+
 });
 
 
+exports.get_user_account = asyncHandler(async(req, res, next) => { 
+
+    console.log("Gamepage mounted - back end ")
+
+    const secretKey = process.env.API_SECURITY_KEY;
+    const payload = jwt.verify(req.accessToken, secretKey);
+
+    // Extract all info from user and give it to front
+    const userAccount = await Users.find({ ID: payload.USER_ID })
+
+    res.status(200).json(
+        {
+            jwt: req.accessToken,
+            userAccount: userAccount
+        }
+    );
+
+    return;
+})

@@ -2,12 +2,12 @@
 // Styles 
 import './Homepage.css'
 // React 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 // RRD 
 // Components
 import { Howtoplay } from '../Components/Howtoplay';
 // COMPONENT 
-export const Homepage = ({setGameState}) => {
+export const Homepage = ({ setGameState }) => {
 
     // STATES 
     const [howToPlayIsOpen, SetHowToPlayIsOpen] = useState(false);
@@ -18,13 +18,9 @@ export const Homepage = ({setGameState}) => {
         setBlur('10px')
         SetHowToPlayIsOpen(true)
     }
-    // Start Game
-    // NOTE - This shoudl be an anyc fetch function, 
-    // when the response is OK (user created and accessToken granted),
-    // the gameState should change to GAMEPAGE,
-    // in the meantime, set it to loading
-    const StartGame = async() => { 
-        
+
+    const StartGame = async () => {
+        const JWT = localStorage.getItem('JWT')
         try {
             const requestOptions = {
                 method: 'POST',
@@ -32,13 +28,19 @@ export const Homepage = ({setGameState}) => {
                     'Content-Type': 'application/json',
                 }
             };
+            // If JWT exists, add it to the headers
+            if (JWT) {
+                requestOptions.headers['Authorization'] = JWT;
+            }
             setGameState('Loading')
-            const response = await fetch('http://localhost:3000/users/create', requestOptions);
+            const response = await fetch('http://localhost:3000/startgame', requestOptions);
             if (!response.ok) {
+                setGameState('Homepage')
                 throw new Error('Failed to fetch data');
+                
             }
             const jsonData = await response.json();
-            localStorage.setItem('JWT', jsonData.jwt);
+            localStorage.setItem('JWT', 'Bearer ' + jsonData.jwt);
             setTimeout(() => {
                 setGameState('Gamepage')
             }, 2000);

@@ -17,6 +17,7 @@ export const LoadingComp = () => {
     setTimeout(() => { 
         setTimeoutMSG('Ok, looks like theres a problem')
     },10000)
+    
     return (
         <div className='LoadingComp'>
             <div className='Loadingcomp-Island'>
