@@ -7,6 +7,10 @@ const usersSchema = new Schema({
         type: String,
         required: true,
     },
+    DURATION: { 
+        type: Number,
+        required: false
+    },
     FIRST_NAME: {
         type: String,
         required: false,

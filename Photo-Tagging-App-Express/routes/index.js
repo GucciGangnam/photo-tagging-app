@@ -34,5 +34,8 @@ router.post('/checkgameover', authenticater_Controller.validateAccessToken, game
 // Submit score 
 router.post('/submitscore', authenticater_Controller.validateAccessToken, game_controller.submit_name)
 
+// Get highscores 
+router.get('/gethighscores', game_controller.get_highscores)
+
 
 module.exports = router;

@@ -11,7 +11,32 @@ export const Homepage = ({ setGameState }) => {
 
     // STATES 
     const [howToPlayIsOpen, SetHowToPlayIsOpen] = useState(false);
-    const [blur, setBlur] = useState('0px')
+    const [blur, setBlur] = useState('0px');
+    const [top5, setTop5] = useState([]);
+
+    // LEADER BOARD FETCH //
+    // UE to fetch highscorews on mount 
+    useEffect(() => {
+        fetchHighscores();
+    }, [])
+    // Fetch top 5 fastest players
+    const fetchHighscores = async () => {
+        try {
+            const response = await fetch('http://localhost:3000/gethighscores');
+            const data = await response.json();
+            console.log(data); // or do something else with the data
+            setTop5(data)
+        } catch (error) {
+            console.error('Error fetching highscores:', error);
+        }
+    }
+    // Helper function to format duration in HH:MM:SS format
+    const formatDuration = (duration) => {
+        const hours = Math.floor(duration / (1000 * 60 * 60));
+        const minutes = Math.floor((duration % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((duration % (1000 * 60)) / 1000);
+        return `${hours}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+    };
 
     // Button handlers 
     const HowtoplayBTN = () => {
@@ -37,7 +62,7 @@ export const Homepage = ({ setGameState }) => {
             if (!response.ok) {
                 setGameState('Homepage')
                 throw new Error('Failed to fetch data');
-                
+
             }
             const jsonData = await response.json();
             localStorage.setItem('JWT', 'Bearer ' + jsonData.jwt);
@@ -90,7 +115,7 @@ export const Homepage = ({ setGameState }) => {
             {/* Leaderboard */}
             <div className='Homepage-Leaderboard' style={{ filter: `blur(${blur})` }}>
                 <table>
-                    <caption>Leaderboard</caption>
+                    <caption>Top 5 Leaderboard</caption>
                     <thead>
                         <tr>
                             <th>Name</th>
@@ -98,26 +123,12 @@ export const Homepage = ({ setGameState }) => {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>John Doe</td>
-                            <td>30</td>
-                        </tr>
-                        <tr>
-                            <td>Jane Smith</td>
-                            <td>25</td>
-                        </tr>
-                        <tr>
-                            <td>John Doe</td>
-                            <td>30</td>
-                        </tr>
-                        <tr>
-                            <td>Jane Smith</td>
-                            <td>25</td>
-                        </tr>
-                        <tr>
-                            <td>John Doe</td>
-                            <td>30</td>
-                        </tr>
+                        {top5.map((player, index) => (
+                            <tr key={index}>
+                                <td>{`${player.firstName} ${player.lastName}`}</td>
+                                <td>{formatDuration(player.duration)}</td>
+                            </tr>
+                        ))}
                     </tbody>
                 </table>
             </div>

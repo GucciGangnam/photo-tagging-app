@@ -162,3 +162,33 @@ exports.submit_name = asyncHandler(async (req, res, next) => {
 });
 
 // // // // // // /// // // /// // /// /// //
+
+// TOP 5 LEADERBOARD //
+exports.get_highscores = asyncHandler(async (req, res, next) => {
+    try {
+        // Calculate the date 3 hours ago
+        const threeHoursAgo = new Date();
+        threeHoursAgo.setHours(threeHoursAgo.getHours() - 3);
+
+        // Delete users with START_TIME older than 3 hours
+        await Users.deleteMany({ START_TIME: { $lt: threeHoursAgo } });
+
+        // Fetch the shortest 5 durations
+        const shortestDurations = await Users.find({ DURATION: { $exists: true } })
+            .sort({ DURATION: 1 }) // Sort by DURATION field in ascending order
+            .limit(5); // Limit the result to 5 users
+
+        // Extract first name, last name, and duration of the shortest 5 durations
+        const highscores = shortestDurations.map(user => ({
+            firstName: user.FIRST_NAME,
+            lastName: user.LAST_NAME,
+            duration: user.DURATION
+        }));
+
+        // Return the shortest 5 durations' first name, last name, and duration
+        return res.status(200).json(highscores);
+    } catch (error) {
+        console.error('Error fetching highscores:', error);
+        return res.status(500).json({ error: "Internal Server Error" });
+    }
+});

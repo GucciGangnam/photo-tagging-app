@@ -39,10 +39,10 @@ exports.create_user = asyncHandler(async (req, res, next) => {
             USER_ID: userID,
         }
         const secretKey = process.env.API_SECURITY_KEY;
-        req.accessToken = jwt.sign(payload, secretKey, { expiresIn: '600m' })
+        req.accessToken = jwt.sign(payload, secretKey, { expiresIn: '180m' })
         // // // // // //
 
-        
+
         console.log("User created successfully:")
         game_controller.start_game(req, res);
     } catch (error) {
