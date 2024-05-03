@@ -31,4 +31,8 @@ router.post('/selectbrian', authenticater_Controller.validateAccessToken, game_c
 // Check game over 
 router.post('/checkgameover', authenticater_Controller.validateAccessToken, game_controller.check_game_over)
 
+// Submit score 
+router.post('/submitscore', authenticater_Controller.validateAccessToken, game_controller.submit_name)
+
+
 module.exports = router;

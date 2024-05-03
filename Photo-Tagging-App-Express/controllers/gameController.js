@@ -105,14 +105,60 @@ exports.select_brian = asyncHandler(async (req, res, next) => {
 
 
 // CHECK IF GAME IS OVER
-exports.check_game_over = asyncHandler(async(req, res, next) => { 
-    const userAccount = await Users.findOne({ID: req.userId});
-    if ((userAccount.FOUND_TOM) && (userAccount.FOUND_SPIDERMAN) && (userAccount.FOUND_KENNY) && (userAccount.FOUND_ROGER) && (userAccount.FOUND_BRIAN)){ 
-        console.log("you won!")
-        return res.status(200).end()
-    } else { 
-        console.log("you havent won yet!")
-        return res.status(401).end()
+exports.check_game_over = asyncHandler(async (req, res, next) => {
+    const userAccount = await Users.findOne({ ID: req.userId });
+    if ((userAccount.FOUND_TOM) && (userAccount.FOUND_SPIDERMAN) && (userAccount.FOUND_KENNY) && (userAccount.FOUND_ROGER) && (userAccount.FOUND_BRIAN)) {
+        if (!userAccount.FINISH_TIME) { // Check if FINISH_TIME doesn't exist
+            await Users.updateOne({ ID: req.userId }, { $set: { FINISH_TIME: new Date() } });
+            return res.status(200).end();
+        } else {
+            return res.status(200).end(); // FINISH_TIME already exists
+        }
+    } else {
+        return res.status(401).end();
     }
-})
+});
 // // // // // // // // // 
+
+// ADD FIRST AND LAST NAME AND DURATION TO ACCOUNT INFO //
+exports.submit_name = asyncHandler(async (req, res, next) => {
+    try {
+        // Find user 
+        const userAccount = await Users.findOne({ ID: req.userId });
+
+        // Check if both START_TIME and FINISH_TIME exist
+        if (userAccount.START_TIME && userAccount.FINISH_TIME) {
+            // Convert strings to Date objects
+            const startTime = new Date(userAccount.START_TIME);
+            const finishTime = new Date(userAccount.FINISH_TIME);
+
+            // Calculate the difference in milliseconds
+            const duration = finishTime.getTime() - startTime.getTime();
+
+            const firstname = req.body.firstname;
+            const lastname = req.body.lastname;
+
+            // Update user 
+            await Users.updateOne(
+                { ID: req.userId },
+                {
+                    $set: {
+                        FIRST_NAME: firstname,
+                        LAST_NAME: lastname,
+                        DURATION: duration
+                    }
+                }
+            );
+            res.status(200).json({ msg: "all good bro" });
+        } else {
+            // If either START_TIME or FINISH_TIME is missing, return a 400 error
+            console.log('START_TIME or FINISH_TIME is missing');
+            res.status(400).json({ error: 'START_TIME or FINISH_TIME is missing' });
+        }
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+});
+
+// // // // // // /// // // /// // /// /// //

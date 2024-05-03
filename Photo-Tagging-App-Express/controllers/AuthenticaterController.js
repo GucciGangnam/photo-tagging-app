@@ -28,16 +28,14 @@ exports.validateAccessToken = asyncHandler(async (req, res, next) => {
         req.accessToken = token;
         console.log('Authrnification passed')
         console.log(req.userId)
-        next(); // WHATEVER YOURE TRYING TO DO
+        next(); 
     } catch (error) {
-        // If the token is invalid or expired, return a 401 Unauthorized response
-        console.log('JWT expired or invalid')
-        console.error(error)
-        console.log("Couldnt Validate JWT => Create new user 2")
         try { 
+            res.status(400).json({ error: "JWT NO GOOD" });
             user_controller.create_user(req, res);
         } catch (error){ 
             console.error(error)
+            res.status(500).json({ error: "Internal Server Error" });
         }
         return
     }

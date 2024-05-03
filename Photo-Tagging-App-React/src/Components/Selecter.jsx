@@ -1,6 +1,6 @@
 // IMPOPRTS 
 // Styles 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './Selecter.css'
 
 
@@ -10,7 +10,8 @@ import './Selecter.css'
 
 
 
-export const Selecter = ({ getAccInfo,
+export const Selecter = ({ setGameState,
+    getAccInfo,
     selectedCell,
     setSelectedCell,
     selecterVisible,
@@ -30,7 +31,10 @@ export const Selecter = ({ getAccInfo,
     // Button handlers 
     // Handle Character select
     // NOTE - EACH ONE OF THESE SHOUDL MAKE A FETCH REQUEST WITH TEH ACCESS TOEKN TO TEH BACKEND
-
+    // UE to run game over checker on mount (in case a player tries to play after winning already)
+    useEffect(() => { 
+        checkGameOver();
+    },[])
     // Check game over function
     const checkGameOver = async () => {
         const JWT = localStorage.getItem('JWT')
@@ -43,13 +47,10 @@ export const Selecter = ({ getAccInfo,
                 },
             };
             const response = await fetch('http://localhost:3000/checkgameover', requestOptions);
-            console.log("game finish checking3")
-            console.log(response)
             if (!response.ok) {
-                console.log('front end - NOT WON')
                 return;
             }
-            console.log('front end - WON')
+            setGameState("Gameover")
         } catch (error) {
             console.error('Error fetching data:', error.message);
         }

@@ -1,0 +1,65 @@
+.Gameoverpage {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+
+}
+
+.Gameoverpage-header {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    max-width: 460px;
+    max-height: 90vh;
+    padding: 10px;
+    /* style */
+    box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.7);
+    background-color: rgba(0, 0, 0, 0.50);
+    border-radius: 25px;
+    text-align: center;
+    color: white;
+    color: 2px solid rgb(221, 66, 250);
+}
+
+
+.Gameoverpage form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    height: 200px;
+    max-width: 460px;
+    max-height: 90vh;
+    padding: 10px;
+    /* style */
+    box-shadow: 0 0 5px 1px rgb(221, 66, 250);
+    background-color: rgba(0, 0, 0, 0.50);
+    border-radius: 25px;
+    text-align: center;
+    color: rgb(221, 66, 250);
+}
+
+.Gameoverpage input { 
+    text-align: center;
+    width: 90%;
+    padding: 10px;
+    border: none;
+    border-radius: 25px;
+    background-color: rgba(0, 0, 0, 0.458);
+    color: rgb(221, 66, 250);
+
+}
+
+.Gameoverpage input:focus { 
+    outline: 2px solid rgb(221, 66, 250);
+
+}
+
+.Gameoverpage button { 
+    width: max-content;
+}

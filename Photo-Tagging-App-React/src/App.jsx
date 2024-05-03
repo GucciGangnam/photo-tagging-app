@@ -10,6 +10,7 @@ import { useState, useEffect } from 'react'
 import { Homepage } from './Pages/Homepage'
 import { Gamepage } from './Pages/Gamepage'
 import { LoadingGamepage } from './Pages/LoadingGamepage'
+import { Gameoverpage } from './Pages/Gameoverpage'
 
 // Components
 
@@ -27,6 +28,8 @@ function App() {
       {gameState === "Homepage" && <Homepage setGameState={setGameState}/> }
       {gameState === "Gamepage" && <Gamepage setGameState={setGameState}/> }
       {gameState === "Loading" && <LoadingGamepage setGameState={setGameState}/> }
+      {gameState === "Gameover" && <Gameoverpage setGameState={setGameState}/> }
+
       
       </div>
   )

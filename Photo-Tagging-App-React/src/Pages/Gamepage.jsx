@@ -25,7 +25,6 @@ export const Gamepage = ({ setGameState }) => {
     // STATES
     const [userAccount, setUserAccount] = useState({})
 
-
     // UE to update front with back end saved data
     useEffect(() => {
         // console.log(userAccount)
@@ -73,7 +72,6 @@ export const Gamepage = ({ setGameState }) => {
     // TIMER //
     const [startTime, setStartTime] = useState(new Date('2024-05-02T09:30:00.151+00:00'));
     const [currentTime, setCurrentTime] = useState(new Date());
-
     useEffect(() => {
         const intervalId = setInterval(() => {
             setCurrentTime(new Date());
@@ -147,6 +145,7 @@ export const Gamepage = ({ setGameState }) => {
             <Circle circlePageX={circlePageX} circlePageY={circlePageY} circleShowing={circleShowing} />
             {/* drop down selecter */}
             <Selecter
+                setGameState={setGameState}
                 getAccInfo={getAccInfo}
                 setUserAccount={setUserAccount}
                 selectedCell={selectedCell}
