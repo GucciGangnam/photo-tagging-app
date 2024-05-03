@@ -53,7 +53,7 @@ export const Gameoverpage = ({ setGameState }) => {
                     'Authorization': JWT
                 }
             };
-            const response = await fetch('http://localhost:3000/userAccount', requestOptions);
+            const response = await fetch('https://photo-tagging-app.adaptable.app/userAccount', requestOptions);
             if (!response.ok) {
                 setGameState('Homepage')
                 throw new Error('Failed to fetch data');
