@@ -46,7 +46,7 @@ export const Selecter = ({ setGameState,
                     'Authorization': JWT,
                 },
             };
-            const response = await fetch('http://localhost:3000/checkgameover', requestOptions);
+            const response = await fetch('https://photo-tagging-app.adaptable.app/checkgameover', requestOptions);
             if (!response.ok) {
                 return;
             }
@@ -72,7 +72,7 @@ export const Selecter = ({ setGameState,
                     selectedCell: selectedCell,
                 })
             };
-            const response = await fetch('http://localhost:3000/selecttom', requestOptions);
+            const response = await fetch('https://photo-tagging-app.adaptable.app/selecttom', requestOptions);
             if (!response.ok) {
                 setTimeout(() => {
                     setLoading(false)
@@ -108,7 +108,7 @@ export const Selecter = ({ setGameState,
                     selectedCell: selectedCell,
                 })
             };
-            const response = await fetch('http://localhost:3000/selectspiderman', requestOptions);
+            const response = await fetch('https://photo-tagging-app.adaptable.app/selectspiderman', requestOptions);
             if (!response.ok) {
                 setTimeout(() => {
                     setLoading(false)
@@ -144,7 +144,7 @@ export const Selecter = ({ setGameState,
                     selectedCell: selectedCell,
                 })
             };
-            const response = await fetch('http://localhost:3000/selectkenny', requestOptions);
+            const response = await fetch('https://photo-tagging-app.adaptable.app/selectkenny', requestOptions);
             if (!response.ok) {
                 setTimeout(() => {
                     setLoading(false)
@@ -180,7 +180,7 @@ export const Selecter = ({ setGameState,
                     selectedCell: selectedCell,
                 })
             };
-            const response = await fetch('http://localhost:3000/selectroger', requestOptions);
+            const response = await fetch('https://photo-tagging-app.adaptable.app/selectroger', requestOptions);
             if (!response.ok) {
                 setTimeout(() => {
                     setLoading(false)
@@ -216,7 +216,7 @@ export const Selecter = ({ setGameState,
                     selectedCell: selectedCell,
                 })
             };
-            const response = await fetch('http://localhost:3000/selectbrian', requestOptions);
+            const response = await fetch('https://photo-tagging-app.adaptable.app/selectbrian', requestOptions);
             if (!response.ok) {
                 setTimeout(() => {
                     setLoading(false)
