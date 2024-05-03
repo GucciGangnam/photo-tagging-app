@@ -94,7 +94,7 @@ export const Gameoverpage = ({ setGameState }) => {
                     lastname: lastname
                 })
             };
-            const response = await fetch('http://localhost:3000/submitscore', requestOptions);
+            const response = await fetch('https://photo-tagging-app.adaptable.app/submitscore', requestOptions);
             if (!response.ok) {
                 setGameState('Homepage')
                 throw new Error('Failed to fetch data');
