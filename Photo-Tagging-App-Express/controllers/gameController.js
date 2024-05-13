@@ -170,8 +170,12 @@ exports.get_highscores = asyncHandler(async (req, res, next) => {
         const threeHoursAgo = new Date();
         threeHoursAgo.setHours(threeHoursAgo.getHours() - 3);
 
-        // Delete users with START_TIME older than 3 hours
-        await Users.deleteMany({ START_TIME: { $lt: threeHoursAgo } });
+        await Users.deleteMany({
+            $and: [
+                { FINISH_TIME: true }, // Check if FINISH_TIME is true
+                { START_TIME: { $lt: threeHoursAgo } } // Check if START_TIME is older than 3 hours ago
+            ]
+        });
 
         // Fetch the shortest 5 durations
         const shortestDurations = await Users.find({ DURATION: { $exists: true } })
