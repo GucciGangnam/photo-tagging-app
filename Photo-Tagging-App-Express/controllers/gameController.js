@@ -166,6 +166,7 @@ exports.submit_name = asyncHandler(async (req, res, next) => {
 // TOP 5 LEADERBOARD //
 exports.get_highscores = asyncHandler(async (req, res, next) => {
     try {
+        console.log("peepeepooppoooo")
         // Calculate the date 3 hours ago
         const threeHoursAgo = new Date();
         threeHoursAgo.setHours(threeHoursAgo.getHours() - 3);
@@ -182,6 +183,9 @@ exports.get_highscores = asyncHandler(async (req, res, next) => {
             .sort({ DURATION: 1 }) // Sort by DURATION field in ascending order
             .limit(5); // Limit the result to 5 users
 
+            console.log("Shortest durations:", shortestDurations);
+
+
         // Extract first name, last name, and duration of the shortest 5 durations
         const highscores = shortestDurations.map(user => ({
             firstName: user.FIRST_NAME,
@@ -190,6 +194,8 @@ exports.get_highscores = asyncHandler(async (req, res, next) => {
         }));
 
         // Return the shortest 5 durations' first name, last name, and duration
+
+
         return res.status(200).json(highscores);
     } catch (error) {
         console.error('Error fetching highscores:', error);
