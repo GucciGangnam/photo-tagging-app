@@ -25,42 +25,6 @@ app.use(cors(corsOptions));
 // // // // // // // // 
 
 
-//////// THIS CODE WAS PROVIDED BY MONGOD ATLAS  --- IT ALLOWED ME TO CONNECT BUT NOT TO CREATE COLLECTION USING THE MATHODS IM USING HERE AND HAVE ALWAYS USED ////////////
-
-// // Create connection to mongoDB
-// // Required for mongo
-// const { MongoClient, ServerApiVersion } = require('mongodb');
-// const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@photo-tagging-app.3nz8nn8.mongodb.net/?retryWrites=true&w=majority&appName=Photo-Tagging-App`;
-// // Create a MongoClient with a MongoClientOptions object to set the Stable API version
-// const client = new MongoClient(uri, {
-//   serverApi: {
-//     version: ServerApiVersion.v1,
-//     strict: true,
-//     deprecationErrors: true,
-//   }
-// });
-// async function run() {
-//   try {
-//     await client.connect();
-//     await client.db("admin").command({ ping: 1 });
-//     console.log("Pinged your deployment. You successfully connected to MongoDB!");
-//     const database = client.db("photo_tagging_app");
-
-//     // Create a new collection named "test"
-//     // await database.createCollection("test");
-//     // console.log("Collection 'test' created successfully.");
-
-//     // Log all collection in photo_tagging_app DB //
-//     const collections = await database.listCollections().toArray();
-//     const collectionNames = collections.map(collection => collection.name);
-//     console.log("Collections in the database:", collectionNames);
-//   } finally {
-//     await client.close();
-//   }
-// }
-// run().catch(console.dir);
-
-
 
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", false);
