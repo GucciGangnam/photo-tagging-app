@@ -172,10 +172,8 @@ exports.get_highscores = asyncHandler(async (req, res, next) => {
         threeHoursAgo.setHours(threeHoursAgo.getHours() - 3);
 
         await Users.deleteMany({
-            $and: [
-                { FINISH_TIME: true }, // Check if FINISH_TIME is true
-                { START_TIME: { $lt: threeHoursAgo } } // Check if START_TIME is older than 3 hours ago
-            ]
+            START_TIME: { $lt: threeHoursAgo }, // Check if START_TIME is older than 3 hours ago
+            FINISH_TIME: { $exists: false } // Check if FINISH_TIME doesn't exist
         });
 
         // Fetch the shortest 5 durations
@@ -190,7 +188,7 @@ exports.get_highscores = asyncHandler(async (req, res, next) => {
         const highscores = shortestDurations.map(user => ({
             firstName: user.FIRST_NAME,
             lastName: user.LAST_NAME,
-            duration: user.DURATION
+            duration: user.DURATION 
         }));
 
         // Return the shortest 5 durations' first name, last name, and duration

@@ -123,7 +123,12 @@ export const Homepage = ({ setGameState }) => {
                         </tr>
                     </thead>
                     <tbody>
-
+                        {top5.map((player, index) => (
+                            <tr key={index}>
+                                <td>{`${player.firstName} ${player.lastName}`}</td>
+                                <td>{formatDuration(player.duration)}</td>
+                            </tr>
+                        ))}
                     </tbody>
                 </table>
             </div>
@@ -131,9 +136,3 @@ export const Homepage = ({ setGameState }) => {
     )
 }
 
-// {top5.map((player, index) => (
-//     <tr key={index}>
-//         <td>{`${player.firstName} ${player.lastName}`}</td>
-//         <td>{formatDuration(player.duration)}</td>
-//     </tr>
-// ))}
