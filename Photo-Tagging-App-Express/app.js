@@ -18,10 +18,7 @@ var app = express();
 // CORS configuration //
 
 const corsOptions = {
-  origin: [
-    'https://photo-tagging-app.adaptable.app',
-    'https://photo-tagging-app-mu.vercel.app'
-  ],
+  origin: '*',
   optionsSuccessStatus: 200,
   methods: ['GET', 'POST'],
   allowedHeaders: ['Authorization', 'Content-Type'],
