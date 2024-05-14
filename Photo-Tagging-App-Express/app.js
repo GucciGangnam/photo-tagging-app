@@ -16,6 +16,8 @@ require('dotenv').config();
 var app = express();
 
 // CORS configuration //
+
+
 const corsOptions = {
   origin: '*', // Allow only requests from this origin
   methods: 'GET,POST', // Allow only specified HTTP methods

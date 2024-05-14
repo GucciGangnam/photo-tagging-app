@@ -23,6 +23,7 @@ export const Homepage = ({ setGameState }) => {
     const fetchHighscores = async () => {
         try {
             const response = await fetch('https://photo-tagging-app.adaptable.app/gethighscores');
+            // const response = await fetch('http://localhost:3000/gethighscores');
             const data = await response.json();
             console.log(data); // or do something else with the data
             setTop5(data)
@@ -59,6 +60,7 @@ export const Homepage = ({ setGameState }) => {
             }
             setGameState('Loading')
             const response = await fetch('https://photo-tagging-app.adaptable.app/startgame', requestOptions);
+            // const response = await fetch('http://localhost:3000/startgame', requestOptions);
             if (!response.ok) {
                 setGameState('Homepage')
                 throw new Error('Failed to fetch data');
