@@ -22,9 +22,9 @@ const corsOptions = {
     'https://photo-tagging-app.adaptable.app',
     'https://photo-tagging-app-mu.vercel.app'
   ],
-  optionsSuccessStatus: 200, // For legacy browser support
-  methods: 'GET,POST', // Allow only specified HTTP methods
-  allowedHeaders: 'Authorization,Content-Type', // Allow only specified headers
+  optionsSuccessStatus: 200,
+  methods: ['GET', 'POST'],
+  allowedHeaders: ['Authorization', 'Content-Type'],
 };
 app.use(cors(corsOptions));
 // // // // // // // // 
