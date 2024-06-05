@@ -5,7 +5,7 @@
 
 ## About this project
 
-This is project was set by the Oding Project as the forst of 3 final full stack projects designed to showcase everythign thats been taught in the full course. 
+This is project was set by the Odin Project as the first of 3 final full stack projects designed to showcase everything thats been taught in the full course. 
 
 This is a 'Wheres Waldo' inspired web based game where users try to find characters as quickly as possible. Give it a try!
 
@@ -14,9 +14,13 @@ This is a 'Wheres Waldo' inspired web based game where users try to find charact
 ## Technologies
 
 JS
+
 CSS
+
 React
+
 NodeJS
+
 MongoDB
 
 ---
