@@ -25,6 +25,12 @@ MongoDB
 
 ---
 
+## Live Link
+
+https://photo-tagging-app-mu.vercel.app
+
+---
+
 ## Screenshots
 
 ### Picture 1
