@@ -1,17 +1,23 @@
 
-# Console.blog
+# Toon Finder
 
 ---
 
 ## About this project
 
-This is the placeholder body text of the about this project section.
+This is project was set by the Oding Project as the forst of 3 final full stack projects designed to showcase everythign thats been taught in the full course. 
+
+This is a 'Wheres Waldo' inspired web based game where users try to find characters as quickly as possible. Give it a try!
 
 ---
 
-## Features
+## Technologies
 
-This is the placeholder body text of the features section.
+JS
+CSS
+React
+NodeJS
+MongoDB
 
 ---
 
@@ -29,6 +35,6 @@ This is the placeholder body text of the features section.
 
 ![Screenshot 3](picture3.png)
 
-### Picture 3
+### Picture 4
 
 ![Screenshot 4](picture4.png)
